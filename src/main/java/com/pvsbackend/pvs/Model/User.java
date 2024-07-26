@@ -5,46 +5,50 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 
 @Entity
-
 public class User {
 
     private @Id
     @GeneratedValue Long id;
-        private String name;
-        private String email;
-        private String password;
+    private String userName;
+    private String course;
+    private int year;
     
-        User(){}
-        public User( String name, String email, String password){
-            this.name = name;
-            this.email = email;
-            this.password = password;
-        }
-        //getters
-        public Long getId(){
-            return id;
-        }
-        public String getName(){
-            return name;
-        }
-        public String getEmail(){
-            return email;
-        }
-        public String getPassword(){
-            return password;
-        }
-    
-        //setters
+    User(){}
 
-        public void setName(String name){
-            this.name = name;
-        }
-        public void setEmail(String email){
-            this.email = email;
-        }
-        public void setPassword(String password){
-            this.password = password;
-        }
-     
-     
+    public User(String userName, String course, int year) {
+        this.userName = userName;
+        this.course = course;
+        this.year = year;
+    }
+
+    // Setters
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public void setCourse(String course) {
+        this.course = course;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+    
+    // Getters
+    public Long getId() {
+        return id;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public String getCourse() {
+        return course;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
 }

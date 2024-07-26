@@ -10,37 +10,54 @@ public class Product {
     private @Id
     @GeneratedValue Long id;
     private String productName;
+    private String description;
     private double price;
-
-    Product (){}
+    private String url;
     
-    public Product(String productName, double price) {
-        this.productName = productName;
-        this.price = price;
+    Product(){}
 
+    public Product(String productName, String description, double price, String url) {
+        this.productName = productName;
+        this.description = description;
+        this.price = price;
+        this.url = url;
     }
 
-    //getters
+    // Setters
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
     
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    // Getters
+    public Long getId() {
+        return id;
+    }
 
     public String getProductName() {
         return productName;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
     public double getPrice() {
         return price;
     }
-
-    public Long getId() {
-        return id;
+    
+    public String getUrl() {
+        return url;
     }
-
-    //setters
-    public void setProductName(String productName) {
-        this.productName = productName;
-    }
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
 }

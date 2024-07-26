@@ -12,8 +12,7 @@ public class UserExceptionHandler {
 
     @ExceptionHandler(UserNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    String UserNotFoundHandler(UserNotFoundException e){
+    String userNotFoundHandler(UserNotFoundException e){
         return e.getMessage();
     }
-
 }

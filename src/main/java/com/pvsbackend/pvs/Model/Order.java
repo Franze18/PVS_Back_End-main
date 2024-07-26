@@ -6,48 +6,51 @@
  import jakarta.persistence.Table;
  
  @Entity
- @Table(name = "ordertbl")
- 
+ @Table(name="ordertbl")
  public class Order {
  
      private @Id
-     @GeneratedValue Long orderId;
-         private  Long userId;
-         private double totalAmount;
-         private String status;
+     @GeneratedValue Long id;
+     private Long userId;
+     private double totalAmmount;
+     private String status;
      
-         Order(){}
-         public Order(Long userId,double totalAmount,String status){
-             this.userId = userId;
-             this.totalAmount = totalAmount;
-             this.status = status;
-         }
-         //getters
-         public Long getOrderId(){
-             return orderId;
-         }
-         public Long getUserId(){
-             return userId;
-         }
-         public double gettotalAmount(){
-             return totalAmount;
-         }
-         public String getstatus(){
-             return status;
-         }
-         
-     
-         //setters
+     Order(){}
  
-         public void setuserId(Long userId){
-             this.userId = userId;
-         }
-         public void settotalAmount(double totalAmount){
-             this.totalAmount = totalAmount;
-         }
-         public void setstatus(String status){
-             this.status = status;
-         }
-         
-      
+     public Order(Long userId, double totalAmmount, String status) {
+         this.userId = userId;
+         this.totalAmmount = totalAmmount;
+         this.status = status;
+     }
+ 
+     // Setters
+     public void setUserId(Long userId) {
+         this.userId = userId;
+     }
+ 
+     public void setTotalAmmount(double totalAmmount) {
+         this.totalAmmount = totalAmmount;
+     }
+ 
+     public void setStatus(String status) {
+         this.status = status;
+     }
+     
+     // Getters
+     public Long getId() {
+         return id;
+     }
+ 
+     public Long getUserId() {
+         return userId;
+     }
+ 
+     public double getTotalAmmount() {
+         return totalAmmount;
+     }
+ 
+     public String getStatus() {
+         return status;
+     }
+ 
  }
