@@ -13,23 +13,24 @@ public class Role {
     private Long id;
     private String name;
 
-    //getters
     Role(){}
 
+    public Role(String name){
+        this.name = name;
+    }
+
+    // Setters
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    // Getters
     public Long getId() {
         return id;
     }
 
     public String getName() {
         return name;
-    }
-    //setters
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
 }

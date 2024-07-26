@@ -14,42 +14,44 @@ import com.pvsbackend.pvs.Model.OrderItem;
 import com.pvsbackend.pvs.NotFoundException.OrderItemNotFoundException;
 import com.pvsbackend.pvs.Repository.OrderItemRepository;
 
-
 @RestController
 @RequestMapping("/api/v1/orderitem")
 public class OrderItemController {
-
-    final OrderItemRepository repo;
     
-    public OrderItemController (OrderItemRepository repo){
+    OrderItemRepository repo;
+
+    public OrderItemController(OrderItemRepository repo) {
         this.repo = repo;
     }
-//http://127.0.0.1P:8080/OrderItem
-    //getall OrderItem
+
+    // GET ALL ORDER ITEMS
+    // http://127.0.0.1:8080/orderitems
     @GetMapping("/all")
-    public List<OrderItem>getOrderItems(){
+    public List<OrderItem> getOrderItems(){
         return repo.findAll();
     }
-    //http://127.0.0.1:8080/OrderItem/1
-    @GetMapping("/{id}")
-    public OrderItem  getOrderItemById(@PathVariable Long id){
-        return repo.findById(id)
-        .orElseThrow (()-> new OrderItemNotFoundException(id));
-    }  
 
-    //http//:127.0.0.1:8080/OrderItem/new
+    // GET ONE PRODUCT
+    // http://127.0.0.1:8080/orderitem/1
+    @GetMapping("/{id}")
+    public OrderItem getOrderItemById(@PathVariable Long id){
+        return repo.findById(id)
+        .orElseThrow(()-> new OrderItemNotFoundException(id));
+    }
+
+    // CREATE ENDPOINTS
+    // http://127.0.0.1:8080/orderitem/new
     @PostMapping("/new")
     public String addOrderItem(@RequestBody OrderItem newOrderItem){
         repo.save(newOrderItem);
-        return "A new Order Item is added!";
-
+        return "A new order item is added. Yey!";
     }
 
-   //DELETE ENDPOINTS
-   //http://127.0.0.1:8080/OrderItem/delete/1
-   @DeleteMapping ("/delete/{id}")
-   public String deleteOrderItem(@PathVariable Long id){
-     repo.deleteById(id);
-     return "An Order Item is deleted!";
-   }
+    // DELETE ENDPOINTS
+    // http://127.0.0.1:8080/product/delete/1
+    @DeleteMapping("/delete/{id}")
+    public String deleteOrderItem(@PathVariable Long id){
+        repo.deleteById(id);
+        return "A orderitem is deleted!";
+    }
 }

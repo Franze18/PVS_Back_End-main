@@ -8,12 +8,11 @@
  import com.pvsbackend.pvs.NotFoundException.OrderItemNotFoundException;
  
  @RestControllerAdvice
- public class OrdeItemExceptionHandler {
+ public class OrderItemExceptionHandler {
  
      @ExceptionHandler(OrderItemNotFoundException.class)
      @ResponseStatus(HttpStatus.NOT_FOUND)
-     String OrderItemNotFoundHandler(OrderItemNotFoundException e){
+     String orderitemNotFoundHandler(OrderItemNotFoundException e){
          return e.getMessage();
      }
- 
  }

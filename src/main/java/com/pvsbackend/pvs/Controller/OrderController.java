@@ -14,43 +14,44 @@ import com.pvsbackend.pvs.Model.Order;
 import com.pvsbackend.pvs.NotFoundException.OrderNotFoundException;
 import com.pvsbackend.pvs.Repository.OrderRepository;
 
-
 @RestController
 @RequestMapping("/api/v1/order")
 public class OrderController {
-
-    final OrderRepository repo;
     
-    public OrderController (OrderRepository repo){
+    OrderRepository repo;
+
+    public OrderController(OrderRepository repo) {
         this.repo = repo;
     }
-//http://127.0.0.1/Order
-    //getall Order
+
+    // GET ALL ORDERS
+    // http://127.0.0.1:8080/orders
     @GetMapping("/all")
-    public List<Order>getOrder(){
+    public List<Order> getOrders(){
         return repo.findAll();
     }
-    //http://127.0.0.1:8080/Order/1
-    @GetMapping("/{id}")
-    public Order  getOrderById(@PathVariable Long id){
-        return repo.findById(id)
-        .orElseThrow (()-> new OrderNotFoundException(id));
-    }  
 
-    //http//:127.0.0.1:8080/Order/new
+    // GET ONE ORDER
+    // http://127.0.0.1:8080/order/1
+    @GetMapping("/{id}")
+    public Order getOrderById(@PathVariable Long id){
+        return repo.findById(id)
+        .orElseThrow(()-> new OrderNotFoundException(id));
+    }
+
+    // CREATE ENDPOINTS
+    // http://127.0.0.1:8080/order/new
     @PostMapping("/new")
     public String addOrder(@RequestBody Order newOrder){
         repo.save(newOrder);
-        return "A new Order is added!";
-
+        return "A new order is added. Yey!";
     }
 
-   //DELETE ENDPOINTS
-   //http://127.0.0.1:8080/Order/delete/1
-   @DeleteMapping ("delete/{id}")
-   public String deleteOrder(@PathVariable Long id){
-     repo.deleteById(id);
-     return " Your Order is been deleted!";
-   }
+    // DELETE ENDPOINTS
+    // http://127.0.0.1:8080/order/delete/1
+    @DeleteMapping("/delete/{id}")
+    public String deleteOrder(@PathVariable Long id){
+        repo.deleteById(id);
+        return "A order is deleted!";
+    }
 }
-

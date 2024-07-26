@@ -14,7 +14,6 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
-
 public class SecurityConfig {
 
     private UserDetailsService userDetailsService;
@@ -36,13 +35,13 @@ public class SecurityConfig {
 
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
-
-        http.csrf(carf-> carf.disable())
-                .authorizeHttpRequests((authorize)->
-                    authorize.requestMatchers( "/api/v1/**").permitAll()
-                            .requestMatchers("/api/v1/**").permitAll()
-                            .anyRequest().authenticated()
-                );
+        http.csrf(csrf -> csrf.disable())
+        .authorizeHttpRequests((authorize) ->
+            authorize.requestMatchers("/api/v1/**").permitAll() //remove (HttpMethod.GET) to function all POSTMAPPING or put (HttpMethod.GET) to front of "/api/v1/**/"
+            .requestMatchers("/api/v1/auth/**").permitAll()
+            .anyRequest().authenticated()
+        );
         return http.build();
     }
+
 }
