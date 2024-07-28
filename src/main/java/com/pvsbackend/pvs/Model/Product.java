@@ -1,5 +1,6 @@
 package com.pvsbackend.pvs.Model;
 
+import io.micrometer.common.lang.Nullable;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -13,19 +14,29 @@ public class Product {
     private String description;
     private double price;
     private String url;
+    private String category;
     
     Product(){}
 
-    public Product(String productName, String description, double price, String url) {
+    public Product(String productName, String description, double price, String url, String category) {
         this.productName = productName;
         this.description = description;
         this.price = price;
         this.url = url;
+        this.category = category;
     }
 
     // Setters
     public void setProductName(String productName) {
         this.productName = productName;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public void setDescription(String description) {
